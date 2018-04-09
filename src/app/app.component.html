@@ -1,0 +1,119 @@
+
+
+<img src="http://www.cryptomineruk.co.uk/wp-content/uploads/2016/01/cryptominer-trans-logo.png"/>
+
+<h2>You must defeat the AI's money to win, he's at: {{player._aiMoney}}$</h2>
+<h3>Time left: {{player.timeDisplay}}</h3>
+<h1>Available money: {{player.money.toFixed(3)}}$</h1>
+
+
+
+<div class="container"
+fxLayout.xs="column"
+fxLayoutAlign="center"
+fxLayoutGap="10px"
+fxLayoutGap.xs="0">
+
+
+<ul>
+    <h1>Available upgrades</h1>
+    <table>
+    
+        <li *ngFor="let upgrade of player.upgrades">          
+            <div class="coinUpgrade" fxFlex fxFlexOffset="50px"  fxFlexOffset.xs="0">
+                    
+                <th style="text-align:center;">
+                    <img src={{upgrade.image}}/>
+                    <img (click)="upgrade.buy(1)" src="https://s.marktplaats.com/z/res/images/icons/collapsible-menu-closed-icon.png"/>
+                    <img (click)="upgrade.buy(5)" src="https://s.marktplaats.com/z/res/images/icons/collapsible-menu-closed-icon.png"/>
+                    <img (click)="upgrade.buy(10)" src="https://s.marktplaats.com/z/res/images/icons/collapsible-menu-closed-icon.png"/>
+                    <img (click)="upgrade.buy(100)" src="https://s.marktplaats.com/z/res/images/icons/collapsible-menu-closed-icon.png"/>
+                    {{upgrade.coin.name}} upgrade (currently {{upgrade.amount}}) (per second: {{upgrade.perSecond.toFixed(4)}})
+
+                </th>
+                
+            </div>
+        </li>
+    </table>
+
+    <div id="alert" class="alert alert-success alert-dismissable">
+        <strong>Success!</strong> You've bought a
+    </div>
+    
+</ul>
+
+
+<ul>
+    <h1>Mine and sell coins here</h1>
+    <table>
+        <li *ngFor="let coin of player.coins">          
+                <div class="coin" fxFlex fxFlexOffset="50px"  fxFlexOffset.xs="0">
+                
+                <!-- <th style="text-align:center;"> -->
+                    <button type="button" class="full btn btn-info" data-toggle="collapse" [attr.data-target]="'#' + coin._id">Open/close {{coin.name}}</button>
+                    
+                    <div id={{coin._id}} class="collapse">
+                        <h1>
+                            {{coin.name}}
+                            {{coin.amount.toFixed(4)}} 
+                        </h1>
+
+                        <h4>
+                            Exchange rate {{coin.rate.toFixed(5)}}
+                            <br>
+                            Total per second {{this._player.getUpgrade(coin.name).perSecond.toFixed(3)}}
+                            <hr>
+                        </h4>
+
+                        <tr>
+                            <td>
+                                <img (click)=coin.mine() src={{coin.image}}/>
+                            </td>
+                        </tr>
+        
+                        <div class="pickaxe" id={{coin.name}}></div>
+                        
+                        <tr>
+                            <td>
+                                <input class="form-control" placeholder="amount you want to sell/buy" type="text" #amount>
+        
+                                <button class="btn btn-primary full" (click)="coin.sell(amount.value)">Sell {{coin._name}}</button>
+                                <button class="btn btn-primary full" (click)="coin.buy(amount.value)">Buy {{coin._name}}</button>
+                                <button class="btn btn-primary full" (click)="coin.mine()">Mine {{coin._name}}</button>
+                                
+                            </td>
+                        </tr>
+                    </div>
+                <!-- </th> -->
+            </div>
+        </li>
+    </table>
+</ul>
+
+
+<div class="col-md-6">
+    <div style="display: block;">
+    <canvas baseChart width="400" height="400"
+                [datasets]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [colors]="lineChartColors"
+                [legend]="lineChartLegend"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+    </div>
+  </div>
+  
+  <!-- <div class="col-md-6" style="margin-bottom: 10px">
+    <table class="table table-responsive table-condensed">
+      <tr>
+        <th *ngFor="let label of lineChartLabels">{{label}}</th>
+      </tr>
+      <tr *ngFor="let d of lineChartData">
+        <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+      </tr> 
+    </table> -->
+  
+  <!-- <button (click)="update()">Update graph</button> -->
+</div>

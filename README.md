@@ -1,15 +1,10 @@
-# Werking van de game
+## About this project
 
-Je moet munten gaan minen door er op te klikken.
-Wanneer je hier op gelikt hebt dan kan je deze verkopen.
-Je kan ze daarna ook weer terug kopen voor koers winst of koers verlies.
-Je kunt ook upgrades kopen waarmee je per seconde een bepaalde munt krijgt.
-Je munt de AI verslaan in 3 minuten.
+<p align="center">You will be able to mine your favorite Crypto coins in Typescript made with the AngularJS framework. This was made a school assignment and my final grade was a 9.2<p>
+<p align="center">You will be able to click the current coin and then sell it at a high price and then buying it back at a lower price. There is a small algorithm in here that determines the next coin price. There's also a graph within this project. You must defeat the AI enemy within 3 minutes to win. </p>
 
-# UML Diagrammen
-
-Staan in het mapje UML
-
+## UML Diagrams
+<p align="center">The UML diagrams may be found in the map UML<p>
 
 # Coinapp
 

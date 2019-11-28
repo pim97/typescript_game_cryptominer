@@ -3,6 +3,8 @@
 <p align="center">You will be able to mine your favorite Crypto coins in Typescript made with the AngularJS framework. This was made a school assignment and my final grade was a 9.2<p>
 <p align="center">You will be able to click the current coin and then sell it at a high price and then buying it back at a lower price. There is a small algorithm in here that determines the next coin price. There's also a graph within this project. You must defeat the AI enemy within 3 minutes to win. </p>
 
+<img src="https://i.gyazo.com/15a523d8634c52e9d125bc175d44c77d.png"/>
+
 ## UML Diagrams
 <p align="center">The UML diagrams may be found in the map UML<p>
 
